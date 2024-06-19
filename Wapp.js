@@ -9,11 +9,21 @@ const windOutput = document.querySelector('.wind-value');
 const form = document.querySelector('.locationInput');
 const search = document.querySelector('.search');
 const cities = document.querySelectorAll('.city');
+const celsiusButton = document.getElementById('celsius');
+const fahrenheitButton = document.getElementById('fahrenheit');
+
 
 let cityInput = "Hisar";
+let unit = "metric";
+
 
 // Your OpenWeatherMap API key (replace 'YOUR_API_KEY' with your actual API key)
 const apiKey = 'd8d939835c7db5689790973ecce67305';
+
+celsiusButton.classList.add('active');
+fahrenheitButton.classList.remove('active');
+
+
 
 cities.forEach((city) => {
     city.addEventListener('click', (e) => {
@@ -35,8 +45,23 @@ form.addEventListener('submit', (e) => {
     }
 });
 
+celsiusButton.addEventListener('click', () => {
+    unit = "metric";
+    celsiusButton.classList.add('active');
+    fahrenheitButton.classList.remove('active');
+    fetchWeatherData();
+});
+
+fahrenheitButton.addEventListener('click', () => {
+    unit = "imperial";
+    fahrenheitButton.classList.add('active');
+    celsiusButton.classList.remove('active');
+    fetchWeatherData();
+});
+
+
 function fetchWeatherData() {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=d8d939835c7db5689790973ecce67305&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=d8d939835c7db5689790973ecce67305&units=${unit}`)
         .then(response => response.json())
         .then(data => {
             if (data.cod === "404") {
@@ -46,12 +71,14 @@ function fetchWeatherData() {
             }
 
             nameOutput.innerHTML = data.name;
-            temp.innerHTML = `${Math.round(data.main.temp)}°C`;
+            temp.innerHTML = `${Math.round(data.main.temp)}°${unit === 'metric' ? 'C' : 'F'}`;
             conditionOutput.innerHTML = data.weather[0].description;
             icon.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data.weather[0].icon}.png)`;
             cloudOutput.innerHTML = data.clouds.all;
             humidityOutput.innerHTML = data.main.humidity;
             windOutput.innerHTML = data.wind.speed;
+           
+           
 
         
         const currentTime = data.dt;
@@ -75,7 +102,7 @@ function fetchWeatherData() {
             } else if (weatherCondition.includes('snow')) {
                 backgroundUrl = 'url(snow_Day.jpg)';
             } else if (weatherCondition.includes('thunderstorm')) {
-                backgroundUrl = 'url(Day.jpg)';
+                backgroundUrl = 'url(thunder.jpg)';
             } else {
                 backgroundUrl = 'url(default_Day.jpg)';
             }
@@ -111,7 +138,7 @@ function fetchWeatherData() {
                         document.querySelectorAll('.weather-info div').forEach(element => {
                             element.style.color = textColor;
                         });
-
+                       
 
         app.style.opacity = "1";
     })
