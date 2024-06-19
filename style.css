@@ -6,7 +6,7 @@ body {
     align-items: center;
     height: 90vh;
     margin: 0;
-    background-image: url('thunder.jpg');
+    background-image: url('default_Day.jpg');
     background-repeat: no-repeat;
     background-size:cover;
 }
@@ -76,7 +76,7 @@ h3{
 
 .name {
     font-size: 55px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .temp {
@@ -98,17 +98,18 @@ h3{
 }
 
 .details {
-    display: flex;
-    justify-content: space-between;
+    display:flex;
+    justify-content:space-evenly;
     margin-top: 30px;
     font-size: 23px;
     font-weight: bold;
     margin-left: 10px;
+
 }
 
 .city {
     display: inline-block;
-    background-color: #007BFF;
+    background:transparent;
     padding: 10px;
     border-radius: 4px;
     margin-right: 90px;
@@ -117,10 +118,72 @@ h3{
     margin-top: 60px;
     font-size: 19px;
     font-weight: bold;
-    border: 1px solid;
+    border: 2px solid  ;
+
 }
 
 .city:hover {
+    background-color: #0a9a3c;
+}
+
+.unit-toggle {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    
+}
+
+.unit-toggle button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+
+}
+
+#celsius{
+    border-radius: 15px 0px 0px 15px;
+}
+
+#fahrenheit{
+    border-radius: 0px 15px 15px 0px;
+}
+.unit-toggle button.active {
+    background-color: #18a14f;
+}
+
+ .wind-toggle {
+    display:flex;
+    position: relative;;
+    flex-direction: row;
+    justify-content:center;
+    
+    
+}
+
+.wind-toggle button {
+    padding: 10px;
+    margin:0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+#ms{
+    border-radius: 15px 0px 0px 15px;
+}
+
+#mph{
+    border-radius: 0px 15px 15px 0px;
+}
+
+.unit-toggle button.active, .wind-toggle button.active {
     background-color: #0a9a3c;
 }
 
@@ -140,6 +203,10 @@ h3{
 
     .details {
         font-size: 20px;
+    }
+
+    .unit-toggle button {
+        font-size: 16px;
     }
 }
 /* for tablet-sized screens */
@@ -173,6 +240,17 @@ h3{
         margin-left: 50px;
     }
 
+    .unit-toggle button {
+        font-size: 14px;
+        margin: 3px;
+    }
+
+    .icon {
+        width: 14rem;
+        height: 50px;
+        margin: 10px auto;
+    }
+
     h3 {
         font-size: 22px;
     }
@@ -185,12 +263,12 @@ h3{
     }
 
     .search, .submit {
-        font-size: 16px;
+        font-size: 15px;
         padding: 8px;
     }
 
     .name, .temp {
-        font-size: 35px;
+        font-size: 36px;
     }
 
     .condition {
@@ -198,13 +276,20 @@ h3{
     }
 
     .details {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .city{
         position: center;
-        margin: 50px 0;
+        margin-top: 15px;
         margin-left: 15px;
+        font-size: 15px;
+    }
+    
+    .unit-toggle button {
+        font-size: 10px;
+        padding: 4px;
+        margin: 0px;
     }
 
     h3 {
