@@ -154,3 +154,5 @@ function fetchWeatherData() {
 
 // Fetch weather data for the initial city
 fetchWeatherData();
+
+
