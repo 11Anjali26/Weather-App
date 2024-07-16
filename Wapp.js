@@ -96,7 +96,7 @@ function fetchWeatherData() {
             if (weatherCondition.includes('clear')) {
                 backgroundUrl = 'url(clear_Day.jpg)';
             } else if (weatherCondition.includes('clouds')) {
-                backgroundUrl = 'url(cloud_day.jpg)';
+                backgroundUrl = 'url(cloud_Day.jpg)';
             } else if (weatherCondition.includes('rain')) {
                 backgroundUrl = 'url(rain_Day.jpg)';
             } else if (weatherCondition.includes('snow')) {
